@@ -1,0 +1,17 @@
+/meewod/meewod
+/meewod/Makefile
+/meewod/*.deb
+/meewod/*.changes
+/meewod-*
+/meewod/*.o
+/meewod/meewod.pro.user
+/meewod/obj/*.o
+/meewod/moc/moc_*
+/iconwork
+*.swp
+/meewod/rcc/*
+*.autosave
+/meewod/qmlapplicationviewer/*
+/data/*.db
+/data/v0.0.1/*.db
+/data/v0.0.2/*.db
