@@ -1,11 +1,4 @@
 TEMPLATE = app
-# Application Version.
-APPVERSION_MAJOR = 0
-APPVERSION_MINOR = 0
-APPVERSION_PATCH = 2
-
-# Define application version.
-DEFINES += APPVERSION_MAJOR=$$APPVERSION_MAJOR APPVERSION_MINOR=$$APPVERSION_MINOR APPVERSION_PATCH=$$APPVERSION_PATCH
 
 # Add more folders to ship with the application, here
 qml_deployment.source = src/qml
@@ -90,6 +83,8 @@ contains(MEEGO_EDITION,harmattan) {
     message(Harmattan Build)
     DEFINES += Q_WS_HARMATTAN
 
+    target.path = /opt/meewod/bin
+
     desktopfile.files = meewod_harmattan.desktop
     desktopfile.path = /usr/share/applications
 
@@ -104,3 +99,8 @@ contains(MEEGO_EDITION,harmattan) {
 
 RESOURCES += \
     src/res.qrc
+
+contains(MEEGO_EDITION,harmattan) {
+    target.path = /opt/meewod/bin
+    INSTALLS += target
+}
