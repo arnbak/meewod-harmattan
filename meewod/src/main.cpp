@@ -6,8 +6,10 @@
 #include "../src/core/meewodapp.hpp"
 #include "../src/core/settings.hpp"
 
-#ifndef QT_SIMULATOR
 #include <qmlapplicationviewer.h>
+
+#ifndef QT_SIMULATOR
+
 #include <MDeclarativeCache>
 #endif
 
@@ -25,12 +27,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setApplicationName("MeeWOD");
     app->setOrganizationName("arnbak");
     app->setOrganizationDomain("com.arnbak");
-
-<<<<<<< HEAD
     app->setApplicationVersion("0.0.2");
-=======
-    app->setApplicationVersion();
->>>>>>> 0894724953923012b2c515e43a67b5dc02ac1e98
     app->setFont(QFont("Nokia Pure Text"));
 
     Settings* settings = new Settings(app.data() );

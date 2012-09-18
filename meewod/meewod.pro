@@ -94,13 +94,9 @@ contains(MEEGO_EDITION,harmattan) {
     splash.files = src/resources/splash.png
     splash.path = /opt/meewod
 
-    INSTALLS += desktopfile icon splash
+    INSTALLS += target desktopfile icon splash
 }
 
 RESOURCES += \
     src/res.qrc
 
-contains(MEEGO_EDITION,harmattan) {
-    target.path = /opt/meewod/bin
-    INSTALLS += target
-}
