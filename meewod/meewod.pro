@@ -83,6 +83,8 @@ contains(MEEGO_EDITION,harmattan) {
     message(Harmattan Build)
     DEFINES += Q_WS_HARMATTAN
 
+    target.path = /opt/meewod/bin
+
     desktopfile.files = meewod_harmattan.desktop
     desktopfile.path = /usr/share/applications
 
@@ -97,3 +99,8 @@ contains(MEEGO_EDITION,harmattan) {
 
 RESOURCES += \
     src/res.qrc
+
+contains(MEEGO_EDITION,harmattan) {
+    target.path = /opt/meewod/bin
+    INSTALLS += target
+}

@@ -26,7 +26,11 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setOrganizationName("arnbak");
     app->setOrganizationDomain("com.arnbak");
 
+<<<<<<< HEAD
     app->setApplicationVersion("0.0.2");
+=======
+    app->setApplicationVersion();
+>>>>>>> 0894724953923012b2c515e43a67b5dc02ac1e98
     app->setFont(QFont("Nokia Pure Text"));
 
     Settings* settings = new Settings(app.data() );
