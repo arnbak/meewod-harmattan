@@ -1,11 +1,4 @@
 TEMPLATE = app
-# Application Version.
-APPVERSION_MAJOR = 0
-APPVERSION_MINOR = 0
-APPVERSION_PATCH = 2
-
-# Define application version.
-DEFINES += APPVERSION_MAJOR=$$APPVERSION_MAJOR APPVERSION_MINOR=$$APPVERSION_MINOR APPVERSION_PATCH=$$APPVERSION_PATCH
 
 # Add more folders to ship with the application, here
 qml_deployment.source = src/qml
