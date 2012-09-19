@@ -1,5 +1,7 @@
 TEMPLATE = app
 
+TARGET = "meewod"
+
 # Add more folders to ship with the application, here
 qml_deployment.source = src/qml
 qml_deployment.target = src
@@ -99,4 +101,11 @@ contains(MEEGO_EDITION,harmattan) {
 
 RESOURCES += \
     src/res.qrc
+
+#CONFIG(debug, debug|release) {
+#    DESTDIR = build/debug
+#} else {
+#    DESTDIR = build/release
+#}
+
 
