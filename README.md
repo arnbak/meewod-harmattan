@@ -26,6 +26,15 @@ Some ideas for more functionality
 
 [Changelog][1]
 
+##Hack it
+Start hacking on MeeWOD, is pretty straight forwarded.
+
+clone the repo.
+
+Open the .pro file from within QtCreator, add the build configurations needed. Ex for using the simulator and the harmattan based build.
+
+And you should be ready to go. 
+
 ##Author
 Lars Arnbak - <arnbak@gmail.com>
 
