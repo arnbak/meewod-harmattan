@@ -8,21 +8,10 @@
 
 #include <qmlapplicationviewer.h>
 
-#ifndef QT_SIMULATOR
-
-#include <MDeclarativeCache>
-#endif
-
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-
-#ifndef QT_SIMULATOR
-    QScopedPointer<QApplication> app(MDeclarativeCache::qApplication(argc, argv));
-    QDeclarativeView *viewer = MDeclarativeCache::qDeclarativeView();
-#else
     QScopedPointer<QApplication> app(createApplication(argc, argv));
     QDeclarativeView *viewer = new QDeclarativeView;
-#endif
 
     app->setApplicationName("MeeWOD");
     app->setOrganizationName("arnbak");
