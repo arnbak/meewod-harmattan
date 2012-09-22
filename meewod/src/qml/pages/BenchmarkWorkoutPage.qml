@@ -14,18 +14,18 @@ Page {
 
     property bool networkRequestRunning: false
 
-    Menu {
-        id: settingsMenu
+//    Menu {
+//        id: settingsMenu
 
-        MenuLayout {
-            MenuItem {
-                text: qsTr("Reload")
-                onClicked: {
-                    confirmRefresh.open();
-                }
-            }
-        }
-    }
+//        MenuLayout {
+//            MenuItem {
+//                text: qsTr("Reload")
+//                onClicked: {
+//                    confirmRefresh.open();
+//                }
+//            }
+//        }
+//    }
 
 
     tools: ToolBarLayout {
@@ -45,12 +45,12 @@ Page {
 //            }
 //        }
 
-        ToolIcon {
-            id: settingsIcon
-            iconId: "toolbar-view-menu"
-            onClicked: (settingsMenu.status === DialogStatus.Closed) ? settingsMenu.open() : settingsMenu.close()
-            anchors.right: parent === undefined ? undefined : parent.right
-        }
+//        ToolIcon {
+//            id: settingsIcon
+//            iconId: "toolbar-view-menu"
+//            onClicked: (settingsMenu.status === DialogStatus.Closed) ? settingsMenu.open() : settingsMenu.close()
+//            anchors.right: parent === undefined ? undefined : parent.right
+//        }
     }
 
     function refresh() {
@@ -64,6 +64,34 @@ Page {
         id: header
         text: qsTr("Benchmark Workouts")
         secondaryText: qsTr("Everything is hard until its easy")
+
+        BusyIndicator {
+
+            anchors.right: parent.right
+            anchors.rightMargin: UIConstants.DEFAULT_MARGIN
+            anchors.verticalCenter: parent.verticalCenter
+
+            platformStyle: BusyIndicatorStyle {
+                inverted: theme.inverted
+            }
+
+            running: visible
+            visible: networkRequestRunning
+
+        }
+
+        ToolIcon {
+            id: refreshHeaderIcon
+            anchors.right: parent.right
+            //anchors.rightMargin: UIConstants.DEFAULT_MARGIN
+            iconId: "toolbar-refresh1"
+
+            visible: !networkRequestRunning
+
+            onClicked: {
+                confirmRefresh.open();
+            }
+        }
     }
 
     TextField {
@@ -207,13 +235,13 @@ Page {
         }
     }
 
-    BusyIndicator {
-        id: busyIndicator
-        visible: networkRequestRunning
-        running: visible
-        platformStyle: BusyIndicatorStyle { size: 'large' }
-        anchors.centerIn: parent
-    }
+//    BusyIndicator {
+//        id: busyIndicator
+//        visible: networkRequestRunning
+//        running: visible
+//        platformStyle: BusyIndicatorStyle { size: 'large' }
+//        anchors.centerIn: parent
+//    }
 
     FastScroll {
         listView: benchmarkListView

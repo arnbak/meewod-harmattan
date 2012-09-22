@@ -30,9 +30,10 @@ Page {
     }
 
 
-    Header {
+    PageHeader {
         id: header
-        text: "Personal Records"
+        text: qsTr("Personal Records");
+        secondaryText: qsTr("Keep track of your progress");
         visible: true
     }
 

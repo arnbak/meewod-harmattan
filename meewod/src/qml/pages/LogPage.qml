@@ -109,14 +109,14 @@ Page {
                         text: logname
                     }
 
-                    RatingIndicator {
-                        id: ratingIndicator
-                        //anchors.verticalCenter: parent.verticalCenter
-                        //anchors.right: parent.right
-                        maximumValue: 5
-                        ratingValue: 2
-                        inverted: false
-                    }
+//                    RatingIndicator {
+//                        id: ratingIndicator
+//                        //anchors.verticalCenter: parent.verticalCenter
+//                        //anchors.right: parent.right
+//                        maximumValue: 5
+//                        ratingValue: 2
+//                        inverted: false
+//                    }
 
                     LabelSubtitle {
                         id: subText
