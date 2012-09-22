@@ -15,7 +15,7 @@ QueryDialog {
              "\nMeeWOD is a crossfit related application for MeeGo/Harmattan" +
              "\n" +
              "\nLicensed under GPL v3 at: " +
-             "\nhttp://github.com/arnbak/meewod-meego"
+             "\ngithub.com/arnbak/meewod-harmattan"
 
     acceptButtonText: "Ok"
 }
