@@ -14,7 +14,9 @@ Rectangle {
 
     width: parent ? parent.width : 0
 
-    height: screen.currentOrientation === Screen.Portrait ? UIConstants.HEADER_DEFAULT_HEIGHT_PORTRAIT : UIConstants.HEADER_DEFAULT_HEIGHT_LANDSCAPE
+    height: screen.currentOrientation === Screen.Portrait ?
+                UIConstants.HEADER_DEFAULT_HEIGHT_PORTRAIT :
+                UIConstants.HEADER_DEFAULT_HEIGHT_LANDSCAPE + UIConstants.DEFAULT_MARGIN
 
     anchors.horizontalCenter: parent.horizontalCenter
 
@@ -37,7 +39,9 @@ Rectangle {
 
             verticalAlignment: Text.AlignVCenter
 
-            color: theme.inverted ? UIConstants.COLOR_INVERTED_FOREGROUND : UIConstants.COLOR_FOREGROUND
+            color: theme.inverted ?
+                       UIConstants.COLOR_INVERTED_FOREGROUND :
+                       UIConstants.COLOR_FOREGROUND
 
             font.pixelSize: UIConstants.FONT_LARGE
 
