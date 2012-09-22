@@ -67,17 +67,26 @@ Page {
 
         ToolIcon {
             id: createLogItemIcon
-            anchors.right: benchmarksIcon.left
-            iconId: "toolbar-new-email"
+            anchors.right: createPersonalRecordIcon.left
+            iconId: "toolbar-history"
             onClicked: {
                 MWT.createPageComponentAndPushToStack("../pages/LogPage.qml");
             }
         }
 
         ToolIcon {
+            id: createPersonalRecordIcon
+            anchors.right: benchmarksIcon.left
+            iconId: "toolbar-clock"
+            onClicked: {
+                MWT.createPageComponentAndPushToStack("../pages/RecordPage.qml");
+            }
+        }
+
+        ToolIcon {
             id: benchmarksIcon
             anchors.right: settingsIcon.left
-            iconId: "toolbar-list"
+            iconId: "toolbar-pages-all"
             onClicked: {
                 MWT.createPageComponentAndPushToStack("../pages/BenchmarkWorkoutPage.qml");
             }
@@ -127,12 +136,13 @@ Page {
             id: refreshHeaderIcon
             anchors.right: parent.right
             //anchors.rightMargin: UIConstants.DEFAULT_MARGIN
-            iconId: "toolbar-refresh"
+            iconId: "toolbar-refresh1"
 
             visible: !networkRequestRunning
 
             onClicked: {
-                confirmRefresh.open();
+                //confirmRefresh.open();
+                refresh();
             }
         }
     }
