@@ -1,0 +1,26 @@
+Format: 1.8
+Date: Tue, 11 Sep 2012 20:25:11 +0200
+Source: meewod
+Binary: meewod
+Architecture: armel
+Version: 0.0.2
+Distribution: unstable
+Urgency: low
+Maintainer: Lars Arnbak <arnbak@gmail.com>
+Changed-By: Lars Arnbak <arnbak@gmail.com>
+Description: 
+ meewod     - MeeWOD - Application aiming mainly for Crossfit usage.
+Changes: 
+ meewod (0.0.2) unstable; urgency=low
+ .
+   * UI changes and fixes
+   * Added a settings page
+   * Added splash screen
+   * FIX: consistent date format
+Checksums-Sha1: 
+ 5ab29a95fdcaa726c6b2661ae18d9c2ab88415ca 173332 meewod_0.0.2_armel.deb
+Checksums-Sha256: 
+ 88d663d172c4739eea55fdeea9fb95077d7995e5d341e76af45f2a8dac564997 173332 meewod_0.0.2_armel.deb
+Files: 
+ ba5b8c6e6b02cbff11845da64ab1eada 173332 user/tools optional meewod_0.0.2_armel.deb
+Maemo-Display-Name: MeeWOD
