@@ -29,12 +29,11 @@ Page {
         }
     }
 
-
-    PageHeader {
+    RefreshableHeader {
         id: header
         text: qsTr("Personal Records");
-        secondaryText: qsTr("Keep track of your progress");
-        visible: true
+        subtext: qsTr("Keep track of your progress");
+        showindicator: false
     }
 
     Item {
@@ -43,8 +42,7 @@ Page {
             top: header.bottom
             bottom: parent.bottom
             left: parent.left
-            right: parent.right
-            //margins: UIConstants.DEFAULT_MARGIN
+            right: parent.right            
         }
 
         ListView {

@@ -38,12 +38,12 @@
         <file>qml/pages/RecordCreateUpdatePage.qml</file>
         <file>qml/pages/SettingsPage.qml</file>
         <file>qml/common/ConfirmDialog.qml</file>
-        <file>qml/common/PageHeader.qml</file>
         <file>qml/common/SectionHeader.qml</file>
         <file>resources/meewodicon32.png</file>
         <file>resources/meewodicon48.png</file>
         <file>resources/meewodicon98.png</file>
         <file>resources/splash.png</file>
         <file>qml/pages/RecordPage.qml</file>
+        <file>qml/common/RefreshableHeader.qml</file>
     </qresource>
 </RCC>

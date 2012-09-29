@@ -15,10 +15,10 @@ Page {
         BackIcon {}
     }
 
-    PageHeader {
-        id: header
-        text: "Profile Settings"
-    }
+//    PageHeader {
+//        id: header
+//        titletext: "Profile Settings"
+//    }
 
 
 }

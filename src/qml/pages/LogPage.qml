@@ -46,27 +46,20 @@ Page {
             }
             anchors.right: parent.right
         }
-
-//        ToolIcon {
-//            id: logMenuIcon
-//            iconId: "toolbar-view-menu"
-//            onClicked: (logSettingsMenu.status === DialogStatus.Closed) ? logSettingsMenu.open() : logSettingsMenu.close()
-//            anchors.right: parent === undefined ? undefined : parent.right
-//        }
     }
 
-
-
-    PageHeader {
+    RefreshableHeader {
         id: header
         text: qsTr("Workout Log")
+
+        showindicator: false
     }
 
     ListView {
         id: logListView
 
         anchors {
-            top: header.bottom            
+            top: header.bottom
             left: parent.left
             right: parent.right
             bottom: parent.bottom

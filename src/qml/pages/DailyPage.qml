@@ -16,7 +16,6 @@ Page {
     AboutDialog { id: aboutDialog }
 
     property bool networkRequestRunning: false
-    property bool headerpulled: false;
 
     Menu {
         id: settingsMenu
@@ -112,37 +111,15 @@ Page {
         }
     }
 
-    PageHeader {
+    RefreshableHeader {
         id: header
         text: qsTr("Daily WOD's")
-        secondaryText: qsTr("Daily workouts from crossfit.com")
+        subtext: qsTr("Daily Workouts From Crossfit.com")
 
-        BusyIndicator {
+        loading: networkRequestRunning;
 
-            anchors.right: parent.right
-            anchors.rightMargin: UIConstants.DEFAULT_MARGIN
-            anchors.verticalCenter: parent.verticalCenter
-
-            platformStyle: BusyIndicatorStyle {
-                inverted: theme.inverted
-            }
-
-            running: visible
-            visible: networkRequestRunning
-
-        }
-
-        ToolIcon {
-            id: refreshHeaderIcon
-            anchors.right: parent.right            
-            iconId: "toolbar-refresh1"
-
-            visible: !networkRequestRunning
-
-            onClicked: {
-                //confirmRefresh.open();
-                refresh();
-            }
+        onClicked: {
+            refresh();
         }
     }
 
@@ -153,7 +130,7 @@ Page {
         contentHeight: listView.height - header.height
 
         anchors {
-            top: header.bottom
+            top: header.bottom            
             left: parent.left
             right: parent.right
             bottom: parent.bottom

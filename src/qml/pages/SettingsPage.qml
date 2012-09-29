@@ -16,9 +16,11 @@ Page {
         BackIcon {}
     }
 
-    PageHeader {
+    RefreshableHeader {
         id: header
         text: qsTr("Settings")
+
+        showindicator: false;
     }
 
     Item {
@@ -28,6 +30,7 @@ Page {
         visible: false
 
         anchors.top: header.bottom
+        //anchors.top: parent.top
 
         ListItemBackground {
             id: background

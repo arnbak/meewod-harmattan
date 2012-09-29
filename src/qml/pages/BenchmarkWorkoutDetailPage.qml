@@ -16,10 +16,10 @@ Page {
 
     id: detailsPage
 
-    PageHeader {
+    RefreshableHeader {
         id: header
-        text: _name        
-        secondaryText: _type
+        text: _name
+        subtext: _type
     }
 
     tools: ToolBarLayout {

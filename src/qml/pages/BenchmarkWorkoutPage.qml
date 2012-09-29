@@ -14,43 +14,11 @@ Page {
 
     property bool networkRequestRunning: false
 
-//    Menu {
-//        id: settingsMenu
-
-//        MenuLayout {
-//            MenuItem {
-//                text: qsTr("Reload")
-//                onClicked: {
-//                    confirmRefresh.open();
-//                }
-//            }
-//        }
-//    }
-
-
     tools: ToolBarLayout {
         id: toolBar
         visible: true
 
         BackIcon {}
-
-//        ToolIcon {
-//            id: outerRightIcon
-//            platformIconId: "toolbar-refresh"
-
-//            anchors.right: parent.right
-
-//            onClicked: {
-//                refresh()
-//            }
-//        }
-
-//        ToolIcon {
-//            id: settingsIcon
-//            iconId: "toolbar-view-menu"
-//            onClicked: (settingsMenu.status === DialogStatus.Closed) ? settingsMenu.open() : settingsMenu.close()
-//            anchors.right: parent === undefined ? undefined : parent.right
-//        }
     }
 
     function refresh() {
@@ -60,37 +28,15 @@ Page {
         }
     }
 
-    PageHeader {
+    RefreshableHeader {
         id: header
         text: qsTr("Benchmark Workouts")
-        secondaryText: qsTr("Everything is hard until its easy")
+        subtext: qsTr("Everything is hard until its easy")
 
-        BusyIndicator {
+        loading: networkRequestRunning
 
-            anchors.right: parent.right
-            anchors.rightMargin: UIConstants.DEFAULT_MARGIN
-            anchors.verticalCenter: parent.verticalCenter
-
-            platformStyle: BusyIndicatorStyle {
-                inverted: theme.inverted
-            }
-
-            running: visible
-            visible: networkRequestRunning
-
-        }
-
-        ToolIcon {
-            id: refreshHeaderIcon
-            anchors.right: parent.right
-            //anchors.rightMargin: UIConstants.DEFAULT_MARGIN
-            iconId: "toolbar-refresh1"
-
-            visible: !networkRequestRunning
-
-            onClicked: {
-                confirmRefresh.open();
-            }
+        onClicked: {
+            refresh();
         }
     }
 
@@ -99,6 +45,7 @@ Page {
 
         anchors {
             top: header.bottom
+            //top: parent.top
             left: parent.left
             right: parent.right
             topMargin: UIConstants.DEFAULT_MARGIN
