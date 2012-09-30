@@ -76,7 +76,7 @@ Page {
         ToolIcon {
             id: createPersonalRecordIcon
             anchors.right: benchmarksIcon.left
-            iconId: "toolbar-clock"
+            iconId: "toolbar-contact"
             onClicked: {
                 MWT.createPageComponentAndPushToStack("../pages/RecordPage.qml");
             }
@@ -85,7 +85,7 @@ Page {
         ToolIcon {
             id: benchmarksIcon
             anchors.right: settingsIcon.left
-            iconId: "toolbar-pages-all"
+            iconId: "toolbar-clock"
             onClicked: {
                 MWT.createPageComponentAndPushToStack("../pages/BenchmarkWorkoutPage.qml");
             }
