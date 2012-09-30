@@ -73,8 +73,8 @@ OTHER_FILES += \
 	resources/meewodicon80.png \
     resources/meewodicon64.png \
     meewod_harmattan.desktop \
-    resources/splash-land.png \
-    ../README.md
+    resources/splash-land.png \   
+
 
 
 contains(MEEGO_EDITION,harmattan) {

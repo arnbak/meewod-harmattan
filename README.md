@@ -39,15 +39,7 @@ And you should be ready to go.
 Lars Arnbak - <arnbak@gmail.com>
 
 ##Screenshots
-![DailyWorkout][3]
-
-![BenchmarkList][4]
-
-![BenchmarkListSearch][5]
-
-![LogList][6]
-
-![LogListEntry][7]
+For screenshots take a look ![here][11]
 
 [1]: https://github.com/arnbak/meewod-harmattan/blob/master/meewod/qtc_packaging/debian_harmattan/changelog
 [2]: http://www.crossfit.com/cf-info/what-crossfit.html
@@ -59,3 +51,4 @@ Lars Arnbak - <arnbak@gmail.com>
 [8]: http://talk.maemo.org/showthread.php?t=86659
 [9]: https://github.com/downloads/arnbak/meewod-harmattan/meewod_0.0.1_armel.deb
 [10]: https://github.com/downloads/arnbak/meewod-harmattan/meewod_0.0.2_armel.deb
+[11]: https://github.com/arnbak/meewod-harmattan/wiki/Screenshots
