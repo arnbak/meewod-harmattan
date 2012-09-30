@@ -54,7 +54,7 @@ Sheet {
             id: sheetContent
             spacing: 12
 
-            anchors{top: parent.top; left: parent.left; right: parent.right; margins: 15}
+            anchors{top: parent.top; left: parent.left; right: parent.right; margins: UIConstants.DEFAULT_MARGIN}
 
             Label {
                 id: nameLabel

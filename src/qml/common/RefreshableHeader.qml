@@ -28,7 +28,7 @@ Item {
     Image {
         id: headerBackground
         anchors.fill: parent
-        source: "image://theme/color6-meegotouch-view-header-fixed" // + (theme.inverted ? "-inverted" : "")
+        source: "image://theme/color2-meegotouch-view-header-fixed" // + (theme.inverted ? "-inverted" : "")
     }
 
     Column {
@@ -109,7 +109,11 @@ Item {
 
             BusyIndicator {
                 running: loading;
-                platformStyle: BusyIndicatorStyle { size: "medium" }
+
+                platformStyle: BusyIndicatorStyle {
+                    inverted: false
+                    size: "medium"
+                }
             }
         }
 
