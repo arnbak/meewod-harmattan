@@ -17,6 +17,8 @@
 #include "../cpp/model/dailylistmodel.hpp"
 #include "../cpp/model/recordlistmodel.hpp"
 #include "../cpp/model/sortmodel.hpp"
+#include "../cpp/core/meewodshareui.hpp"
+
 #include <cpp/core/servicehandler.hpp>
 
 

@@ -3,6 +3,7 @@ import com.nokia.meego 1.0
 
 import "../common"
 import "../pages"
+import "../delegates"
 import "../js/UIConstants.js" as UIConstants
 
 Page {
@@ -20,12 +21,12 @@ Page {
 
         CreateIcon {
             id: createItem
+
             onClicked: {
-                console.log("create");
+                createRecordItemPage.selectedIndex = -1;
                 createRecordItemPage.open();
             }
 
-            //createpage: "../pages/CreatePersonalRecordPage.qml"
         }
     }
 
@@ -36,80 +37,48 @@ Page {
         showindicator: false
     }
 
-    Item {
+    ListView {
+        id: listView
+        model: recordListModel
+
+        contentHeight: listView.height - header.height
 
         anchors {
             top: header.bottom
-            bottom: parent.bottom
             left: parent.left
-            right: parent.right            
+            right: parent.right
+            bottom: parent.bottom
         }
 
-        ListView {
-            id: logListView
-            anchors.fill: parent
-            model: personalRecordModel
+        clip: true
 
-            clip: true
+        delegate: RecordListDelegate {
+            id: listItem
 
-            delegate: Item {
-                id: listItem
-                height: 88
-                width: parent.width
+            onClicked: {
 
-                ListItemBackground {
-                    id: background
-                    visible: mouseArea.pressed
-                }
-
-                Separator {
-                    anchors.leftMargin: -UIConstants.DEFAULT_MARGIN
-                    anchors.rightMargin: -UIConstants.DEFAULT_MARGIN
-                }
-
-                Row {
-                    anchors.fill: parent
-                    anchors.margins: UIConstants.DEFAULT_MARGIN
-
-                    Column {
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: parent.width
-
-//                        LabelTitle {
-//                            id: mainText
-//                            text: logname
-//                        }
-
-//                        LabelSubtitle {
-//                            id: subText
-//                            text: logdate
-//                        }
-                    }
-                }
-
-                ListArrowIcon {
-                    anchors.rightMargin: UIConstants.DEFAULT_MARGIN
-                }
-
-                MouseArea {
-                    id: mouseArea
-                    anchors.fill: background
-                    onClicked: {
-                        if(model !== "") {
-                            console.log("index " + index + " selected");
-                            createLogItemPage.currentIndex = index;
-                            createLogItemPage.open();
-                        }
-                    }
-                }
+                createRecordItemPage.selectedIndex = index;
+                createRecordItemPage.item = recordListModel.getItem(index);
+                //console.log(recordListModel.getItem(index).uid);
+                createRecordItemPage.open();
+                //console.log("hi")
             }
 
-            ScrollDecorator {
-                flickableItem: logListView
+            onPressAndHold: {
+                console.log("hi 2")
             }
+
+
         }
     }
 
 
 
+
+
 }
+
+
+
+
+

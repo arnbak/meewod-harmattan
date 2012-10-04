@@ -45,5 +45,7 @@
         <file>resources/splash.png</file>
         <file>qml/pages/RecordPage.qml</file>
         <file>qml/common/RefreshableHeader.qml</file>
+        <file>qml/pages/RecordDetailPage.qml</file>
+        <file>qml/delegates/RecordListDelegate.qml</file>
     </qresource>
 </RCC>

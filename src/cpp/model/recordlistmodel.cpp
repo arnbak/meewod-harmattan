@@ -4,6 +4,18 @@ RecordListModel::RecordListModel(const QSqlDatabase &db, QObject *parent)
     : QAbstractListModel(parent)
 {
     _db = db;
+
+    QHash<int, QByteArray> roles;
+    roles[RecordUidRole] = "uid";
+    roles[RecordIdRole] = "modelid";
+    roles[RecordNameRole] = "name";
+    roles[RecordCompletionTimeRole] = "time";
+    roles[RecordDateRole] = "date";
+    roles[RecordDescriptionRole] = "description";
+    roles[RecordCategoryRole] = "category";
+    setRoleNames(roles);
+
+
 }
 
 RecordListModel::~RecordListModel()
@@ -11,6 +23,78 @@ RecordListModel::~RecordListModel()
     QSqlDatabase::database().close();
     QSqlDatabase::removeDatabase("QSQLITE");
 }
+
+void RecordListModel::clear() const
+{
+
+}
+
+
+void RecordListModel::persist() const
+{
+
+}
+
+bool RecordListModel::running() const
+{
+    return false;
+}
+
+void RecordListModel::addItem(const QString &name, const QString &completiontime, const QString &date, const QString &description,  const QString &category)
+{
+    RecordListItem * item = new RecordListItem(name, completiontime, QDate::fromString(date, "dd-MM-yyyy"), description, category);
+
+    beginInsertRows(QModelIndex(), 0, 0);
+    _recordList.prepend(item);
+    endInsertRows();
+
+    emit countChanged();
+
+    qDebug() << "add item named " + item->getName();
+}
+
+QVariantMap RecordListModel::getItem(const int &index) const
+{
+    QVariantMap entry;
+
+    if(index >= _recordList.count()) {
+        return entry;
+    }
+
+    RecordListItem * item = _recordList.at(index);
+
+    entry.insert("modelid", index);
+    entry.insert("uid", item->getUid());
+    entry.insert("name", item->getName());
+    entry.insert("time", item->getCompletionTime());
+    entry.insert("date", item->getStringDate());
+    entry.insert("description", item->getDescription());
+    entry.insert("category", item->getCategory());
+    return entry;
+}
+
+void RecordListModel::updateItem(const int &index, const QString &name, const QString &completiontime, const QString &date, const QString &description, const QString &category)
+{
+    RecordListItem * item = _recordList.at(index);
+
+    item->setName(name);
+    item->setCompletionTime(completiontime);
+    item->setDate(QDate::fromString(date, "dd-MM-yyyy"));
+    item->setDescription(description);
+    item->setCategory(category);
+
+    _recordList.replace(index, item);
+
+    QModelIndex idx = createIndex(index, 0);
+
+    emit dataChanged(idx, idx);
+}
+
+void RecordListModel::removeItem(const int &index)
+{
+    removeRow(index);
+}
+
 
 void RecordListModel::appendRow(RecordListItem *item)
 {
@@ -82,45 +166,54 @@ QVariant RecordListModel::data(const QModelIndex &index, int role) const
         return QVariant();
     }
 
-    //    if(role == WorkoutLogListIdRole)
-    //    {
-    //        return _logList[index.row()]->getId();
-    //    }
-    //    else if (role == WorkoutLogListNameRole)
-    //    {
-    //        return _logList[index.row()]->getName();
-    //    }
-    //    else if (role == WorkoutLogListDateRole)
-    //    {
-    //        return _logList[index.row()]->getStringDate();
-    //    }
-    //    else if(role == WorkoutLogListDescriptionRole)
-    //    {
-    //        return _logList[index.row()]->getDescription();
-    //    }
-    //    else if(role == WorkoutLogListHandlestampRole)
-    //    {
-    //        return _logList[index.row()]->getHandleStamp();
-    //    }
-    //    else
-    //    {
-    return QVariant();
-    //    }
+    if(role == RecordUidRole)
+    {
+        return _recordList[index.row()]->getUid();
+    }
+    else if (role == RecordIdRole)
+    {
+        return _recordList[index.row()]->getModelId();
+    }
+    else if (role == RecordNameRole)
+    {
+        qDebug() << "record name " << _recordList[index.row()]->getName() << " for index " << index.row();
+        return _recordList[index.row()]->getName();
+    }
+    else if(role == RecordCompletionTimeRole)
+    {
+        return _recordList[index.row()]->getCompletionTime();
+    }
+    else if(role == RecordDateRole)
+    {
+        return _recordList[index.row()]->getStringDate();
+    }
+    else if(role == RecordDescriptionRole)
+    {
+        return _recordList[index.row()]->getDescription();
+    }
+    else if(role == RecordCategoryRole)
+    {
+        return _recordList[index.row()]->getCategory();
+    }
+    else
+    {
+        return QVariant();
+    }
 }
 
-void RecordListModel::clear() const
+QVariantMap RecordListModel::get(const int &index) const
 {
+    QVariantMap mapItem;
 
-}
+    if(index < 0 || index >  _recordList.count())
+    {
+        return mapItem;
+    }
 
+    RecordListItem* listItem = _recordList.at(index);
 
-void RecordListModel::persist() const
-{
+    mapItem.insert("date", listItem->getStringDate());
 
-}
-
-bool RecordListModel::running() const
-{
-    return false;
+    return mapItem;
 }
 

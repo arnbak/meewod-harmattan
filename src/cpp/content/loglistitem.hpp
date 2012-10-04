@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QDateTime>
 #include <QDate>
+#include <QUuid>
 
 class LogListItem
 {
@@ -32,6 +33,7 @@ public:
     void setHandleStamp(const QString& handlestamp);
 
 private:
+    QUuid _uid;
     int _id;
     QString _name;
     QDate _date;

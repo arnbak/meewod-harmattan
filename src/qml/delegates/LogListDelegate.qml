@@ -32,11 +32,7 @@ Item {
     }
 
     Item {
-        anchors.fill: parent
-        //        anchors {
-        //            leftMargin: UIConstants.DEFAULT_MARGIN
-        //            rightMargin: UIConstants.DEFAULT_MARGIN
-        //        }
+        anchors.fill: parent     
 
         Column {
             anchors.verticalCenter: parent.verticalCenter
@@ -66,19 +62,8 @@ Item {
                 width: parent.width
                 elide: Text.ElideRight
             }
-
-
         }
 
-        //        Image {
-        //            id: viewDetails
-        //            source: !theme.inverted ?
-        //                        "image://theme/icon-m-common-drilldown-arrow" :
-        //                        "image://theme/icon-m-common-drilldown-arrow-inverse"
-        //            anchors.verticalCenter: parent.verticalCenter
-        //            anchors.right: parent.right
-        //            visible: pressable
-        //        }
     }
 
 }

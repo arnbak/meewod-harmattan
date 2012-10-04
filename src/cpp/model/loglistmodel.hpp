@@ -32,9 +32,10 @@ public:
 public:
     Q_INVOKABLE void addLogItem(const QString& name, const QString& date, const QString& description);
     Q_INVOKABLE void updateLogItem(const int& index, const QString& name, const QString& date, const QString& description);
+    Q_INVOKABLE void deleteLogItem(const int& index);
 
     Q_INVOKABLE void persist();
-    Q_INVOKABLE void deleteLogItem(const int& index);
+
 
     Q_INVOKABLE QVariantMap getLogItem(const int& index) const;
 
@@ -46,7 +47,6 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-
 
     void appendRow(LogListItem *item);
     void appendRows(const QList<LogListItem *> &items);

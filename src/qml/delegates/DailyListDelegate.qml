@@ -7,8 +7,9 @@ import "../js/constants.js" as ExtrasConstants
 import "../common"
 
 Item {
-    clip: true
+
     id: dailyListDelegate
+
     signal clicked
 
     property string title: model.title
@@ -18,6 +19,8 @@ Item {
 
     property bool pressable: true
 
+    clip: true
+
     width: parent.width
 
     height: listColumn.height
@@ -25,7 +28,6 @@ Item {
     ListItemBackground {
         id: background
         visible: mouseArea.pressed
-
     }
 
     Separator {
@@ -111,7 +113,7 @@ Item {
         }
 
         onPressAndHold: {
-            console.log("Eventually share item " + index);
+            //console.log("Eventually share item " + index);
 
             ShareUI.share(title, uri);
         }

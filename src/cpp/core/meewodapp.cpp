@@ -29,8 +29,11 @@ MeeWodApp::MeeWodApp(QDeclarativeContext *context)
 
     _context->setContextProperty("dailyListModel", _dailyListModel);
     _context->setContextProperty("logListModel", _logListModel);
-    _context->setContextProperty("personalRecordModel", _recordListModel);
+    _context->setContextProperty("recordListModel", _recordListModel);
     _context->setContextProperty("benchmarkListModel", _sortModel);
+
+    MeeWODShareUi shareUi;
+    context->setContextProperty("ShareUI", &shareUi);
 }
 
 MeeWodApp::~MeeWodApp()

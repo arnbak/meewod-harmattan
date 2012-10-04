@@ -13,6 +13,16 @@ Sheet {
     acceptButtonText: qsTr("Save")
     rejectButtonText: qsTr("Cancel")
 
+    property int selectedIndex: -1
+
+    property alias recordname: nameId.text
+    property alias recordtime: timeText.text
+    property alias recorddate: dateText.text
+    property alias recorddescription: descriptionText.text
+    property alias recordcategory: categoryText.text
+
+    property variant item
+
     TimePickerDialog {
         id: timePickerDialog
         titleText: qsTr("Record time")
@@ -70,7 +80,7 @@ Sheet {
             }
 
             TextField {
-                id: name
+                id: nameId
                 width: parent.width
                 placeholderText: qsTr("Record Name ex. 500m row")
             }
@@ -119,9 +129,6 @@ Sheet {
                 id: dateSelector
                 height: 66
                 width: parent.width
-
-
-
 
                 ListItemBackground {
                     id: dateSelectorBackground
@@ -186,7 +193,83 @@ Sheet {
 
                 wrapMode: TextEdit.Wrap
             }
+
+            Label {
+                id: categoryLabel
+                text: qsTr("Category:")
+                font.pointSize: 26
+            }
+
+            TextField {
+                id: categoryText
+                placeholderText: qsTr("Workout Category (ex swimming)")
+                //height: Math.max (100, implicitHeight)
+                width: parent.width
+
+                //                onCursorPositionChanged: {
+                //                    categoryText.positionToRectangle(cursorPosition);
+                //                }
+
+                //text: logEntryDescription
+
+                //wrapMode: TextEdit.Wrap
+            }
         }
 
-    } // end flicable
+    } // end flickable
+
+    onAccepted: {
+        console.log("add item " + recordtime + " " + recorddate);
+
+        if(selectedIndex === -1) {
+            recordListModel.addItem(recordname, recordtime, recorddate, recorddescription, recordcategory);
+        } else if(selectedIndex !== -1) {
+            recordListModel.updateItem(selectedIndex, recordname, recordtime, recorddate, recorddescription, recordcategory);
+
+        }
+    }
+
+    Component.onCompleted: {
+        console.log("Status " + status === PageStatus.Active)
+    }
+
+    function init() {
+        console.log("init")
+
+        recordname = ''
+        recorddescription = ''
+        recordcategory = ''
+        recorddate = qsTr("dd:MM:yyyy")
+        recordtime = qsTr("00:00:00")
+    }
+
+    onStatusChanged: {
+
+        //createLogItemPage.currentItem = workoutLogModel.get(index);
+
+        //console.log("onstatus " + status + " index " + currentIndex);
+
+        if(status === DialogStatus.Opening) {
+
+            //console.log("opening");
+
+            if(selectedIndex === -1) {
+                init();
+            } else {
+
+                recordname = item.name;
+                recorddate = item.date;
+                recordtime = item.time;
+                //                item = logListModel.getLogItem(currentIndex);
+                //                nameText.text = item.logname;
+                //                dateText.text = item.logdate;
+                //                descriptionText.text = item.logdesc;
+            }
+
+        } else if(status === DialogStatus.Opened) {
+            //console.log("opened");
+        }
+    }
+
+
 }
