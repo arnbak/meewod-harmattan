@@ -15,6 +15,7 @@ RecordListModel::RecordListModel(const QSqlDatabase &db, QObject *parent)
     roles[RecordCategoryRole] = "category";
     setRoleNames(roles);
 
+    loadItems();
 
 }
 
@@ -51,6 +52,8 @@ void RecordListModel::addItem(const QString &name, const QString &completiontime
     emit countChanged();
 
     qDebug() << "add item named " + item->getName();
+
+    persistItem(item);
 }
 
 QVariantMap RecordListModel::getItem(const int &index) const
@@ -88,6 +91,8 @@ void RecordListModel::updateItem(const int &index, const QString &name, const QS
     QModelIndex idx = createIndex(index, 0);
 
     emit dataChanged(idx, idx);
+
+    persistItem(item);
 }
 
 void RecordListModel::removeItem(const int &index)
@@ -176,7 +181,6 @@ QVariant RecordListModel::data(const QModelIndex &index, int role) const
     }
     else if (role == RecordNameRole)
     {
-        qDebug() << "record name " << _recordList[index.row()]->getName() << " for index " << index.row();
         return _recordList[index.row()]->getName();
     }
     else if(role == RecordCompletionTimeRole)
@@ -215,5 +219,60 @@ QVariantMap RecordListModel::get(const int &index) const
     mapItem.insert("date", listItem->getStringDate());
 
     return mapItem;
+}
+
+void RecordListModel::persistItem(RecordListItem *item)
+{
+    qDebug() << "add item named " + item->getName();
+
+    QSqlDatabase::database().transaction();
+    QSqlQuery insert(_db);
+
+    QVariant uid(item->getUid());
+    QVariant modelid(-1);
+    QVariant name(item->getName());
+    QVariant time(item->getCompletionTime());
+    QVariant date(item->getDate());
+    QVariant description(item->getDescription());
+    QVariant category(item->getCategory());
+
+    insert.prepare("INSERT OR REPLACE INTO personalrecords "
+                   " (uid, modelid, name, time, date, description, category) "
+                   " VALUES (?,?,?,?,?,?,?)");
+
+    insert.addBindValue(uid);
+    insert.addBindValue(modelid);
+    insert.addBindValue(name);
+    insert.addBindValue(time);
+    insert.addBindValue(date);
+    insert.addBindValue(description);
+    insert.addBindValue(category);
+
+    if(!insert.exec()) {
+        qDebug() << "error insert ... ";
+    } else {
+        QSqlDatabase::database().commit();
+    }
+}
+
+void RecordListModel::loadItems() {
+    _recordList.clear();
+
+    QSqlQuery select("SELECT a.uid, a.modelid, a.name, a.time, a.date, a.description, a.category "
+                     "FROM personalrecords a "
+                     "ORDER BY a.name DESC");
+
+    if(select.exec()) {
+        while(select.next()) {
+            RecordListItem * item = new RecordListItem(select.value(0).toString(),
+                                                       select.value(1).toInt(),
+                                                       select.value(2).toString(),
+                                                       select.value(3).toString(),
+                                                       select.value(4).toDate(),
+                                                       select.value(5).toString(),
+                                                       select.value(6).toString());
+            appendRow(item);
+        }
+    }
 }
 

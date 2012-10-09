@@ -50,6 +50,11 @@ public:
     bool removeRow(int row, const QModelIndex &parent = QModelIndex());
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex());
 
+
+private:
+    void persistItem(RecordListItem * item);
+    void loadItems();
+
 signals:
     void countChanged();
 private:

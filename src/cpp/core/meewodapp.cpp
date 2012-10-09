@@ -90,8 +90,7 @@ QSqlDatabase MeeWodApp::createDatabase() const {
                                           "description TEXT, "
                                           "handlestamp REAL )");
 
-        if(!createWorklogTableQuery.exec())
-        {
+        if(!createWorklogTableQuery.exec()) {
             qDebug() << "last error "  << db.lastError();
         }
 
@@ -102,8 +101,7 @@ QSqlDatabase MeeWodApp::createDatabase() const {
                                                    "description TEXT, "
                                                    "workouttext TEXT )");
 
-        if(!createBenchmarkWorkoutTableQuery.exec())
-        {
+        if(!createBenchmarkWorkoutTableQuery.exec()) {
             qDebug() << "last error "  << db.lastError();
         }
 
@@ -112,25 +110,29 @@ QSqlDatabase MeeWodApp::createDatabase() const {
                                                "title TEXT, "
                                                "text TEXT, "
                                                "uri TEXT )");
-        if(!createDailyWorkoutTableQuery.exec())
-        {
+
+        if(!createDailyWorkoutTableQuery.exec()) {
             qDebug() << "last error "  << db.lastError();
         }
 
-        //        QSqlQuery createPersonalRecordTableQuery("CREATE TABLE IF NOT EXISTS personalrecords "
-        //                                               "(id real PRIMARY KEY, "
-        //                                               "title TEXT, "
-        //                                               "text TEXT, "
-        //                                               "date TEXT )");
-        //        if(createPersonalRecordTableQuery.exec())
-        //        {
-        //            qDebug("created personal records table");
-        //        } else {
-        //            qDebug() << "last error "  << db.lastError();
-        //        }
+        QSqlQuery createPersonalRecordTableQuery("CREATE TABLE IF NOT EXISTS personalrecords "
+                                                 "(uid TEXT PRIMARY KEY, "
+                                                 "modelid INTEGER, "
+                                                 "name TEXT, "
+                                                 "time TEXT, "
+                                                 "date DATE, "
+                                                 "description TEXT, "
+                                                 "category TEXT)");
+
+
+        if(!createPersonalRecordTableQuery.exec()) {
+            qDebug() << "last error "  << db.lastError();
+        }
+
 
     } else {
         qDebug() << "not created";
     }
+
     return db;
 }

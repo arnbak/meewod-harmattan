@@ -16,6 +16,18 @@ RecordListItem::RecordListItem(const QString &name, const QString &completion, c
 
 }
 
+RecordListItem::RecordListItem(const QString &uid, const int& modelid,  const QString &name, const QString &completion, const QDate &date, const QString &description, const QString &category)
+    : _uid(uid),
+      _modelid(modelid),
+      _name(name),
+      _completiontime(completion),
+      _date(date),
+      _description(description),
+      _category(category)
+{
+
+}
+
 RecordListItem::~RecordListItem()
 {
 

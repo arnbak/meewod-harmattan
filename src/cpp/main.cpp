@@ -37,8 +37,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QDeclarativeContext * context = viewer.rootContext();
     context->setContextProperty("Settings", settings);
 
-
-
     MeeWodApp * appContent = new MeeWodApp(context);
     viewer.setMainQmlFile(QLatin1String("qml/pages/main.qml"));
     viewer.showFullScreen();

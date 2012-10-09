@@ -202,17 +202,8 @@ Sheet {
 
             TextField {
                 id: categoryText
-                placeholderText: qsTr("Workout Category (ex swimming)")
-                //height: Math.max (100, implicitHeight)
+                placeholderText: qsTr("Workout Category (ex swimming)")                
                 width: parent.width
-
-                //                onCursorPositionChanged: {
-                //                    categoryText.positionToRectangle(cursorPosition);
-                //                }
-
-                //text: logEntryDescription
-
-                //wrapMode: TextEdit.Wrap
             }
         }
 
@@ -225,7 +216,6 @@ Sheet {
             recordListModel.addItem(recordname, recordtime, recorddate, recorddescription, recordcategory);
         } else if(selectedIndex !== -1) {
             recordListModel.updateItem(selectedIndex, recordname, recordtime, recorddate, recorddescription, recordcategory);
-
         }
     }
 

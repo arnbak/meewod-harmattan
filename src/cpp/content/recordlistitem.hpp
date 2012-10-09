@@ -9,6 +9,7 @@ class RecordListItem
 public:
     RecordListItem();
     RecordListItem(const QString& name, const QString& completion, const QDate& date, const QString& description, const QString& category );
+    RecordListItem(const QString& uid, const int& modelid, const QString& name, const QString& completion, const QDate& date, const QString& description, const QString& category );
     ~RecordListItem();
 
     QString getUid() const;
