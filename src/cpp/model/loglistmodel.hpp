@@ -58,9 +58,10 @@ public slots:
     void listBackupError(const int&);
 
 private:
-    void loadLogListFromDB();
-    void saveLogListItemToDB(LogListItem* item);
-    void updateLogListItemToDB(LogListItem* item);
+    void loadItems();
+    //void saveLogListItemToDB(LogListItem* item);
+    //void updateLogListItemToDB(LogListItem* item);
+    void persistItem(LogListItem* item);
     void deleteFromDB();
 
 signals:

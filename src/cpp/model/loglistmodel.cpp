@@ -15,7 +15,7 @@ LogListModel::LogListModel(const QSqlDatabase& db, QObject *parent)
     roles[WorkoutLogListHandlestampRole] = "loghandlestamp";
     setRoleNames(roles);
 
-    loadLogListFromDB();
+    loadItems();
 
     connect(_serviceHandler, SIGNAL(putListItemsRequestFineshed(int)), this, SLOT(listBackedUp(int)));
     connect(_serviceHandler, SIGNAL(handlerError(int)), this, SLOT(listBackupError(int)));
@@ -43,9 +43,11 @@ void LogListModel::addLogItem(const QString& name, const QString &date, const QS
 
     emit countChanged();
 
-   //appendRow(item);
+    //appendRow(item);
 
     //saveLogListItemToDB(item);
+
+    persistItem(item);
 }
 
 void LogListModel::updateLogItem(const int& index, const QString &name, const QString &date, const QString &description)
@@ -126,16 +128,6 @@ bool LogListModel::removeRows(int row, int count, const QModelIndex &parent)
 }
 
 
-
-
-//void LogListModel::syncListItems()
-//{
-//    ServiceHandler remoteService;
-//    remoteService.requestPutLogList(_logList);
-
-//    qDebug() << "sync list items ";
-//}
-
 QVariantMap LogListModel::getLogItem(const int& index) const
 {
     QVariantMap entry;
@@ -144,7 +136,7 @@ QVariantMap LogListModel::getLogItem(const int& index) const
         return entry;
     }
 
-    LogListItem * item = _logList.at(index);  
+    LogListItem * item = _logList.at(index);
 
     entry.insert("logid", index);
     entry.insert("logname", item->getName());
@@ -195,7 +187,7 @@ QVariant LogListModel::data(const QModelIndex &index, int role) const
     }
 }
 
-void LogListModel::loadLogListFromDB()
+void LogListModel::loadItems()
 {    
     _logList.clear();
 
@@ -216,35 +208,61 @@ void LogListModel::loadLogListFromDB()
             item->setHandleStamp(selQuery.value(4).toString());
 
             appendRow(item);
-
         }
     }
 
 
 }
 
-void LogListModel::updateLogListItemToDB(LogListItem *item)
-{    
-    QSqlQuery updateQuery;
+void LogListModel::persistItem(LogListItem * item) {
+    QSqlDatabase::database().transaction();
 
-    updateQuery.prepare("UPDATE workoutlog "
-                        "SET name=:name, date=:date, description=:description, handlestamp=:handlestamp "
-                        "WHERE id=:id");
+    QSqlQuery insert(_db);
 
-    updateQuery.bindValue(":id", item->getId());
+    QVariant name(item->getName());
+    QVariant date(item->getDate());
+    QVariant description(item->getDescription());
+    QVariant handlestamp(item->getHandleStamp());
 
-    updateQuery.bindValue(":name", item->getName());
-    updateQuery.bindValue(":date", item->getDate());
+    insert.prepare("INSERT OR REPLACE INTO workoutlog "
+                   " (name, date, description, handlestamp) "
+                   " VALUES (?,?,?,?)");
 
-    updateQuery.bindValue(":description", item->getDescription());
-    updateQuery.bindValue(":handlestamp", QDateTime::currentDateTime().toMSecsSinceEpoch());
+    insert.addBindValue(name);
+    insert.addBindValue(date);
+    insert.addBindValue(description);
+    insert.addBindValue(handlestamp);
 
-
-    if(!updateQuery.exec())
-    {
-        qDebug() << "error " << _db.lastError();
+    if(!insert.exec()) {
+        qDebug() << "error insert ... " << QSqlDatabase::database(_db.connectionName()).lastError();
+    } else {
+        QSqlDatabase::database().commit();
     }
+
 }
+
+//void LogListModel::updateLogListItemToDB(LogListItem *item)
+//{
+//    QSqlQuery updateQuery;
+
+//    updateQuery.prepare("UPDATE workoutlog "
+//                        "SET name=:name, date=:date, description=:description, handlestamp=:handlestamp "
+//                        "WHERE id=:id");
+
+//    updateQuery.bindValue(":id", item->getId());
+
+//    updateQuery.bindValue(":name", item->getName());
+//    updateQuery.bindValue(":date", item->getDate());
+
+//    updateQuery.bindValue(":description", item->getDescription());
+//    updateQuery.bindValue(":handlestamp", QDateTime::currentDateTime().toMSecsSinceEpoch());
+
+
+//    if(!updateQuery.exec())
+//    {
+//        qDebug() << "error " << _db.lastError();
+//    }
+//}
 
 void LogListModel::deleteFromDB() {
 

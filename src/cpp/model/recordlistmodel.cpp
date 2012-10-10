@@ -249,7 +249,7 @@ void RecordListModel::persistItem(RecordListItem *item)
     insert.addBindValue(category);
 
     if(!insert.exec()) {
-        qDebug() << "error insert ... ";
+        qDebug() << "error insert ... " <<  QSqlDatabase::database(_db.connectionName()).lastError();
     } else {
         QSqlDatabase::database().commit();
     }
