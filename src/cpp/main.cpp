@@ -14,15 +14,13 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QApplication> app(createApplication(argc, argv));
 
-    QmlApplicationViewer viewer; // = new QmlApplicationViewer;
+    QmlApplicationViewer viewer;
 
     app->setApplicationName("MeeWOD");
     app->setOrganizationName("arnbak");
     app->setOrganizationDomain("com.arnbak");
-    app->setApplicationVersion("0.0.2");
+    app->setApplicationVersion("0.0.3");
     app->setFont(QFont("Nokia Pure Text"));
-
-    //qDebug() << "UUID " << QUuid::createUuid();
 
     Settings* settings = new Settings(app.data());
 

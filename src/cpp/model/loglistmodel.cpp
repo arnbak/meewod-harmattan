@@ -43,10 +43,6 @@ void LogListModel::addLogItem(const QString& name, const QString &date, const QS
 
     emit countChanged();
 
-    //appendRow(item);
-
-    //saveLogListItemToDB(item);
-
     persistItem(item);
 }
 
