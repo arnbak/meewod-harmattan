@@ -61,6 +61,7 @@ Sheet {
 
     content: Flickable {
         anchors.fill: parent
+        contentHeight: sheetContent.height
 
         Column {
             id: sheetContent
@@ -69,8 +70,7 @@ Sheet {
             anchors {
                 top: parent.top
                 left: parent.left
-                right: parent.right
-                bottom: parent.bottom
+                right: parent.right                
                 margins: UIConstants.DEFAULT_MARGIN
             }
 
