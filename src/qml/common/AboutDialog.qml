@@ -12,7 +12,7 @@ QueryDialog {
              "\nBy Lars Arnbak" +
              "\nContact: arnbak@gmail.com" +
              "\n" +
-             "\nMeeWOD is a crossfit related application for MeeGo/Harmattan" +
+             "\nMeeWOD is a Crossfit tracking application for your Nokia N9" +
              "\n" +
              "\nLicensed under GPL v3 at: " +
              "\ngithub.com/arnbak/meewod-harmattan"
