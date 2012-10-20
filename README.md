@@ -21,26 +21,11 @@ Some ideas for more functionality
 > -- <cite>[Crossfit.com][2]</cite>
 
 ##Get it
-[Version 0.0.2][10]
+Get it at the download section.
 
-[Version 0.0.1][9]
+The changelog is available [here][1]
 
-[Changelog][1]
 
-##Hack it
-Start hacking on MeeWOD, is pretty straight forwarded.
-
-clone the repo.
-
-Open the .pro file from within QtCreator, add the build configurations needed. Ex for using the simulator and the harmattan based build.
-
-And you should be ready to go. 
-
-##Author
-Lars Arnbak - <arnbak@gmail.com>
-
-##Screenshots
-For screenshots take a look ![here][11]
 
 [1]: https://github.com/arnbak/meewod-harmattan/blob/master/debian/changelog
 [2]: http://www.crossfit.com/cf-info/what-crossfit.html
