@@ -9,6 +9,7 @@ Crossfit tracking application for your Nokia N9
 
 Thread at [maemo.org][8]
 
+
 ####Ideas
 
 Some ideas for more functionality
