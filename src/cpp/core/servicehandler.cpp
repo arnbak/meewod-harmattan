@@ -1,5 +1,8 @@
 #include "../cpp/core/servicehandler.hpp"
 
+
+static const QString USER_AGENT = "MeeWOD/0.0.3 (MeeGo/Harmattan)";
+
 ServiceHandler::ServiceHandler()
     : _nwr(new NetworkRequestHandler)
 {
@@ -152,7 +155,7 @@ void ServiceHandler::requestPutLogList(QList<LogListItem*> list)
     request.setRawHeader("Content-Type", "application/json; charset=utf-8");
     request.setRawHeader("ACCEPT", "application/json");
     request.setRawHeader("Accept-Charset", "utf-8");
-    request.setRawHeader("User-Agent", QString("MeeWOD/0.0.1 (MeeGo/Harmattan)").toUtf8());
+    request.setRawHeader("User-Agent", USER_AGENT.toUtf8());
 
     QVariantList variantList;
 
@@ -195,7 +198,7 @@ void ServiceHandler::requestDailyList()
     request.setRawHeader("Content-Type", "application/json; charset=utf-8");
     request.setRawHeader("ACCEPT", "application/json");
     request.setRawHeader("Accept-Charset", "utf-8");
-    request.setRawHeader("User-Agent", QString("MeeWOD/0.0.1 (MeeGo/Harmattan)").toUtf8());
+    request.setRawHeader("User-Agent", USER_AGENT.toUtf8());
 
     //qDebug() << "request made";
     QString data;
@@ -218,7 +221,7 @@ void ServiceHandler::requestBenchmarkList()
     request.setRawHeader("Content-Type", "application/json; charset=utf-8");
     request.setRawHeader("ACCEPT", "application/json");
     request.setRawHeader("Accept-Charset", "utf-8");
-    request.setRawHeader("User-Agent", QString("MeeWOD/0.0.1 (MeeGo/Harmattan)").toUtf8());
+    request.setRawHeader("User-Agent", USER_AGENT.toUtf8());
 
     //qDebug() << "request made";    
     QString data;

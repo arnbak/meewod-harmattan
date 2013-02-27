@@ -44,6 +44,7 @@ private slots:
 
 private:
     NetworkRequestHandler * _nwr;
+
 };
 
 #endif // MEEWODSERVICEHANDLER_HPP
