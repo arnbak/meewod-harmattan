@@ -30,7 +30,7 @@ Screenshot
 Get it
 ------
 
-Binary availiable [here][4]
+Binary available [here][4]
 
 The changelog is available [here][1]
 
