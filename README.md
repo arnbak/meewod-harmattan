@@ -14,7 +14,6 @@ Ideas
 
 Some ideas for more functionality
 
-* Share log entries via the native share ui
 * Backup functionality
 
 Crossfit?
@@ -37,7 +36,7 @@ The changelog is available [here][1]
 Issues can be reported [here][6]
 
 
-[1]: https://github.com/arnbak/meewod-harmattan/blob/master/debian/changelog
+[1]: https://github.com/arnbak/meewod-harmattan/blob/master/qtc_packaging/debian_harmattan/changelog
 [2]: http://www.crossfit.com/cf-info/what-crossfit.html
 [3]: http://talk.maemo.org/showthread.php?t=86659
 [4]: http://pub.arnbak.com/meewod/meewod_0.0.4_armel.deb
