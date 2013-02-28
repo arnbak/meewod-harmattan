@@ -44,6 +44,7 @@ private:
     RecordListModel *_recordListModel;
     SortModel *_sortModel;
     QDeclarativeContext * _context;
+    MeeWODShareUi * _shareControl;
 };
 
 #endif // MEEWODAPP_HPP

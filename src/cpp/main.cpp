@@ -19,7 +19,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     app->setApplicationName("MeeWOD");
     app->setOrganizationName("arnbak");
     app->setOrganizationDomain("com.arnbak");
-    app->setApplicationVersion("0.0.3");
+    app->setApplicationVersion("0.0.4");
     app->setFont(QFont("Nokia Pure Text"));
 
     Settings* settings = new Settings(app.data());
@@ -42,7 +42,6 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     int result = app->exec();
 
     delete appContent;
-    //delete viewer;
     delete settings;
 
     return result;

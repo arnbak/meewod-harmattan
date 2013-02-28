@@ -29,7 +29,7 @@ public:
     void requestPutLogList(QList<LogListItem*> list);    
 
 public slots:    
-    void handleGetRequestResult(const QString& result);
+    //void handleGetRequestResult(const QString& result);
     void handlePutRequestRequest(const QString& result);
     void handlePostRequestResult(const QString& result);
 

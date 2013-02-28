@@ -113,9 +113,7 @@ Item {
         }
 
         onPressAndHold: {
-            //console.log("Eventually share item " + index);
-
-            ShareUI.share(title, uri);
+            ShareControl.share(title, uri);
         }
     }
 

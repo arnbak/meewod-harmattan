@@ -40,6 +40,6 @@ Issues can be reported [here][6]
 [1]: https://github.com/arnbak/meewod-harmattan/blob/master/debian/changelog
 [2]: http://www.crossfit.com/cf-info/what-crossfit.html
 [3]: http://talk.maemo.org/showthread.php?t=86659
-[4]: http://pub.arnbak.com/meewod/meewod_0.0.3_armel.deb
+[4]: http://pub.arnbak.com/meewod/meewod_0.0.4_armel.deb
 [5]: https://raw.github.com/arnbak/meewod-harmattan/master/data/v0.0.3/Screen_27-feb-13_15-30-29.png
 [6]: https://github.com/arnbak/meewod-harmattan/issues

@@ -1,10 +1,8 @@
 #include "../cpp/core/meewodshareui.hpp"
 
-MeeWODShareUi::MeeWODShareUi(QObject *parent)
-    : QObject(parent)
-{
+MeeWODShareUi::MeeWODShareUi() { }
 
-}
+MeeWODShareUi::~MeeWODShareUi() { }
 
 void MeeWODShareUi::share(const QString &title, const QString &url)
 {

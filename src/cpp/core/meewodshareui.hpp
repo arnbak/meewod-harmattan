@@ -16,7 +16,8 @@ class MeeWODShareUi : public QObject
     Q_OBJECT
 
 public:
-    MeeWODShareUi(QObject * parent = 0);
+    explicit MeeWODShareUi();
+    ~MeeWODShareUi();
     Q_INVOKABLE void share(const QString& title, const QString& url);
 };
 

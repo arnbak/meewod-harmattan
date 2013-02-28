@@ -1,9 +1,7 @@
 #include <QtDeclarative/QDeclarativeContext>
 #include <QtCore/QDebug>
 #include <QSharedPointer>
-
 #include "../cpp/core/meewodapp.hpp"
-
 
 static const QString DBNAME = "meewod.db";
 static const QString APPDIR = "arnbak";
@@ -32,8 +30,9 @@ MeeWodApp::MeeWodApp(QDeclarativeContext *context)
     _context->setContextProperty("recordListModel", _recordListModel);
     _context->setContextProperty("benchmarkListModel", _sortModel);
 
-    MeeWODShareUi shareUi;
-    context->setContextProperty("ShareUI", &shareUi);
+    _shareControl = new MeeWODShareUi();
+
+    _context->setContextProperty("ShareControl", _shareControl);
 }
 
 MeeWodApp::~MeeWodApp()
@@ -43,7 +42,8 @@ MeeWodApp::~MeeWodApp()
     delete _dailyListModel;
     delete _logListModel;
     delete _recordListModel;
-    //delete _context;
+    delete _shareControl;
+    delete _context;
 }
 
 BenchmarkListModel* MeeWodApp::getBenchmarkListModel() const

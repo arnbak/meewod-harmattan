@@ -1,3 +1,11 @@
+meewod (0.0.4) unstable; urgency=low
+
+    * Change in the webservice, required a change in the client too.
+    * Actual http error code (if an error occured) is now shown client side.
+    * Enabled share interface, to share daily workouts from the list.
+
+ -- Lars Arnbak <arnbak@gmail.com>  Thu, 28 Feb 2013 10:30:59 +0100
+
 meewod (0.0.3) unstable; urgency=low
 
     * Personal record functionality
